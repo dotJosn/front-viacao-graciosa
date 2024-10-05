@@ -6,14 +6,15 @@ export default function Login() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-700">
       <div className="flex w-full max-w-4xl bg-white rounded shadow-md">
-        <div className="hidden md:block w-1/2 relative h-96">
+        <div className="flex justify-center items-center w-1/2 h-96">
           <Image
-            src="/images/bus-login-page.png"
-            alt="Descrição da imagem"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-l-md"
+            src="/images/bus.png"
+            alt="Imagem de um ônibus"
+            width={400}
+            height={400}
+            className="rounded"
           />
+
         </div>
 
         <div className="w-full md:w-1/2 p-8 space-y-6">
