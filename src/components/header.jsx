@@ -25,7 +25,7 @@ const Header = () => {
             </li>
             <li className="flex items-center space-x-2 group">
               <FaBusAlt className="text-2xl group-hover:text-yellow-300 transition-colors duration-300" />
-              <Link href="/about" className="text-lg font-medium hover:text-yellow-300 transition-colors duration-300">
+              <Link href="/aboutUs" className="text-lg font-medium hover:text-yellow-300 transition-colors duration-300">
                 Sobre nós
               </Link>
             </li>

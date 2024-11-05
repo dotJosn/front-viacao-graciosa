@@ -9,7 +9,6 @@ export default function Login() {
   return (
     <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-700 px-4">
       <div className="flex flex-col md:flex-row w-full max-w-4xl bg-white rounded shadow-md">
-        {/* Hide the image on small screens, show on medium and up */}
         <div className="hidden md:flex justify-center items-center w-full md:w-1/2 h-64 md:h-96">
           <Image
             src="/images/bus.png"

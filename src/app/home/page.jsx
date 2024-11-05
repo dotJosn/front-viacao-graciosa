@@ -1,6 +1,5 @@
-"use client";
 import Header from "@/components/header";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { IoBag } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
