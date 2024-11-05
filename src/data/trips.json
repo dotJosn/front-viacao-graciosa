@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "driverName": "1",
+    "destino": "Guaratuba",
+    "start": "2024-11-05T22:13:03.662Z",
+    "end": "2024-11-05T22:13:05.711Z"
+  },
+  {
+    "id": 2,
+    "driverName": "2",
+    "destino": "Morretes",
+    "start": "2024-11-05T22:15:52.100Z",
+    "end": "2024-11-05T22:15:52.948Z"
+  },
+  {
+    "id": 3,
+    "driverName": "3",
+    "destino": "Antonina",
+    "start": "2024-11-05T22:16:10.072Z",
+    "end": "2024-11-05T22:16:11.360Z"
+  },
+  {
+    "id": 4,
+    "driverName": "2",
+    "destino": "Morretes",
+    "start": "2024-11-05T22:16:55.822Z",
+    "end": "2024-11-05T22:16:57.101Z"
+  }
+]
