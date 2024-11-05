@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Header from "@/components/header";
+import Link from 'next/link';
 
 const Travel = () => {
   const [isRaceActive, setIsRaceActive] = useState(false);
@@ -148,7 +149,7 @@ const Travel = () => {
       <div className="p-12 flex justify-center">
         <div className="w-3/5 bg-graciosa p-6 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold mb-4 text-white">Histórico de Viagens</h2>
-          
+
           <div className="flex space-x-4 mb-4">
             <input
               type="text"
@@ -167,17 +168,20 @@ const Travel = () => {
               className="border p-2 w-1/2 text-black rounded"
             />
           </div>
-          
+
           <div className="max-h-80 overflow-y-auto">
             {filteredTrips.length > 0 ? (
               <ul className="space-y-4">
                 {filteredTrips.map((trip) => (
                   <li key={trip.id} className="p-4 bg-gray-800 rounded-lg shadow-sm border border-gray-700">
                     <p className="text-white"><strong>ID da Viagem:</strong> {trip.id}</p>
-                    <p className="text-white"><strong>ID do Motorista:</strong> {trip.driverName}</p>
+                    <p className="text-white"><strong>Motorista:</strong> {trip.driverName}</p>
                     <p className="text-white"><strong>Destino:</strong> {trip.destino}</p>
                     <p className="text-white"><strong>Início:</strong> {new Date(trip.start).toLocaleString()}</p>
                     <p className="text-white"><strong>Fim:</strong> {new Date(trip.end).toLocaleString()}</p>
+                    <Link href={`/travel/${trip.id}`} className="text-blue-500">
+                      Ver detalhes
+                    </Link>
                   </li>
                 ))}
               </ul>
