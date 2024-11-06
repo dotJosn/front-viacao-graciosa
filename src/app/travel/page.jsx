@@ -175,7 +175,7 @@ const Travel = () => {
                 {filteredTrips.map((trip) => (
                   <li key={trip.id} className="p-4 bg-gray-800 rounded-lg shadow-sm border border-gray-700">
                     <p className="text-white"><strong>ID da Viagem:</strong> {trip.id}</p>
-                    <p className="text-white"><strong>Motorista:</strong> {trip.driverName}</p>
+                    <p className="text-white"><strong>ID do Motorista:</strong> {trip.driverName}</p>
                     <p className="text-white"><strong>Destino:</strong> {trip.destino}</p>
                     <p className="text-white"><strong>Início:</strong> {new Date(trip.start).toLocaleString()}</p>
                     <p className="text-white"><strong>Fim:</strong> {new Date(trip.end).toLocaleString()}</p>

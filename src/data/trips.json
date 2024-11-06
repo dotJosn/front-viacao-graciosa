@@ -1,9 +1,16 @@
 [
   {
     "id": 1,
-    "driverName": "142",
-    "destino": "Guaratuba",
-    "start": "2024-11-05T22:56:55.830Z",
-    "end": "2024-11-05T22:56:57.608Z"
+    "driverName": "Motorista 1",
+    "destino": "Destino 1",
+    "start": "2024-11-01T10:00:00Z",
+    "end": "2024-11-01T11:00:00Z"
+  },
+  {
+    "id": 2,
+    "driverName": "Motorista 2",
+    "destino": "Destino 2",
+    "start": "2024-11-02T10:00:00Z",
+    "end": "2024-11-02T11:00:00Z"
   }
 ]
