@@ -3,8 +3,7 @@ import Sidebar from "@/components/Sidebar";
 import React from "react";
 import Image from "next/image";
 import { IoBag } from "react-icons/io5";
-import { CiHeart } from "react-icons/ci";
-import { FaBell } from "react-icons/fa";
+import { FaBell, FaCalendar } from "react-icons/fa";
 import { IoPeople } from "react-icons/io5";
 import Link from "next/link";
 
@@ -67,9 +66,9 @@ const Home = () => {
                 </Link>
               </ul>
               <ul className="flex items-center space-x-2 bg-graciosa p-2 rounded-lg group">
-                <CiHeart className="text-2xl text-white" />
-                <a href="/building" className="text-white text-lg">
-                  Parcerias
+                <FaCalendar className="text-2xl text-white" />
+                <a href="/calendar" className="text-white text-lg">
+                  Calendário
                 </a>
               </ul>
               <ul className="flex items-center space-x-2 bg-graciosa p-2 rounded-lg group">

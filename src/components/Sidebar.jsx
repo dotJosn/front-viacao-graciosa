@@ -3,13 +3,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { IoBag, IoPeople } from "react-icons/io5";
-import { CiHeart } from "react-icons/ci";
-import { FaBell, FaChevronLeft, FaChevronRight, FaMoneyBillWave } from "react-icons/fa";
+import { FaBell, FaChevronLeft, FaChevronRight, FaMoneyBillWave, FaCalendar } from "react-icons/fa";
 import { MdAirplaneTicket } from "react-icons/md";
 import { IoChatbubbles } from "react-icons/io5";
 
 const Sidebar = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -55,10 +54,10 @@ const Sidebar = () => {
             isCollapsed ? "justify-center" : ""
           }`}
         >
-          <CiHeart className="text-2xl" />
+          <FaCalendar className="text-2xl" />
           {!isCollapsed && (
-            <Link href="/building" className="text-lg">
-              Parcerias
+            <Link href="/calendar" className="text-lg">
+              Calendario
             </Link>
           )}
         </li>
