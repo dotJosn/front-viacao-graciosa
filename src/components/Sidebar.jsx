@@ -6,6 +6,7 @@ import { IoBag, IoPeople } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { FaBell, FaChevronLeft, FaChevronRight, FaMoneyBillWave } from "react-icons/fa";
 import { MdAirplaneTicket } from "react-icons/md";
+import { IoChatbubbles } from "react-icons/io5";
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -16,9 +17,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`h-screen bg-gray-800 text-white fixed top-0 transition-all duration-300 z-50 ${
-        isCollapsed ? "w-16" : "w-64"
-      }`}
+      className={`h-screen bg-gray-800 text-white fixed top-0 left-0 transition-all duration-300 z-50 ${isCollapsed ? "w-16" : "w-64"}`}
     >
       {/* Botão de Recolher/Expandir */}
       <button
@@ -84,6 +83,17 @@ const Sidebar = () => {
           {!isCollapsed && (
             <Link href="/travel" className="text-lg">
               Viagem
+            </Link>
+          )}
+        </li>
+        <li
+        className={`flex items-center space-x-3 p-3 hover:bg-gray-700 ${
+          isCollapsed ? "justify-center" : ""
+        }`}>
+          <IoChatbubbles className="text-2xl" />
+          {!isCollapsed && (
+            <Link className="text-lg" href="/chat">
+              Chat
             </Link>
           )}
         </li>
