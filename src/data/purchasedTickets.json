@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "origin": "Curitiba",
+    "destination": "Morretes",
+    "departure_time": "2024-11-20T08:30:00Z",
+    "arrival_time": "2024-11-20T09:45:00Z",
+    "price": 35,
+    "company": "Viação Graciosa",
+    "bus_type": "Convencional",
+    "available_seats": 12,
+    "customerName": "Pampu",
+    "seatNumber": "A3",
+    "purchaseDate": "2024-11-20T18:33:56.006Z"
+  }
+]
