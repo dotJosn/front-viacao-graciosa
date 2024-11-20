@@ -11,13 +11,24 @@ const Travel = () => {
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
   const [trips, setTrips] = useState([]);
-  const [driverFilter, setDriverFilter] = useState(""); // Filtro para o nome do motorista
-  const [destinationFilter, setDestinationFilter] = useState(""); // Filtro para o destino
+  const [driverFilter, setDriverFilter] = useState("");
+  const [destinationFilter, setDestinationFilter] = useState("");
+  const [selectedTrip, setSelectedTrip] = useState(null);
 
   useEffect(() => {
     fetch("/api/trips")
       .then((res) => res.json())
-      .then((data) => setTrips(data));
+      .then((data) =>
+        setTrips(
+          data.map((trip) => ({
+            ...trip,
+            avgSpeed: (Math.random() * 60 + 40).toFixed(2),
+            maxSpeed: (Math.random() * 20 + 100).toFixed(2),
+            minSpeed: (Math.random() * 10 + 20).toFixed(2),
+            totalDistance: "30", // Definindo o valor fixo de 30 km para todas as viagens
+          }))
+        )
+      );
   }, []);
 
   const handleStartRace = () => {
@@ -37,6 +48,10 @@ const Travel = () => {
       destino: driverInfo.destino,
       start: startTime,
       end,
+      avgSpeed: (Math.random() * 60 + 40).toFixed(2),
+      maxSpeed: (Math.random() * 20 + 100).toFixed(2),
+      minSpeed: (Math.random() * 10 + 20).toFixed(2),
+      totalDistance: "30", // Definindo o valor fixo de 30 km para a nova viagem
     };
 
     fetch("/api/trips", {
@@ -72,7 +87,14 @@ const Travel = () => {
     }
   };
 
-  // Filtrando as viagens com base no motorista e no destino
+  const handleViewDetails = (trip) => {
+    setSelectedTrip(trip);
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedTrip(null);
+  };
+
   const filteredTrips = trips.filter((trip) => {
     return (
       (driverFilter === "" || trip.driverName.toLowerCase().includes(driverFilter.toLowerCase())) &&
@@ -134,21 +156,13 @@ const Travel = () => {
               </button>
             </div>
           )}
-
-          {endTime && (
-            <div className="mt-6">
-              <h2 className="text-xl font-bold text-white">Corrida Finalizada</h2>
-              <p className="text-white"><strong>Fim:</strong> {endTime.toLocaleString()}</p>
-            </div>
-          )}
         </div>
       </div>
 
-      {/* Filtros para Histórico de Viagens */}
       <div className="p-12 flex justify-center">
         <div className="w-3/5 bg-graciosa p-6 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold mb-4 text-white">Histórico de Viagens</h2>
-          
+
           <div className="flex space-x-4 mb-4">
             <input
               type="text"
@@ -167,7 +181,7 @@ const Travel = () => {
               className="border p-2 w-1/2 text-black rounded"
             />
           </div>
-          
+
           <div className="max-h-80 overflow-y-auto">
             {filteredTrips.length > 0 ? (
               <ul className="space-y-4">
@@ -176,8 +190,12 @@ const Travel = () => {
                     <p className="text-white"><strong>ID da Viagem:</strong> {trip.id}</p>
                     <p className="text-white"><strong>ID do Motorista:</strong> {trip.driverName}</p>
                     <p className="text-white"><strong>Destino:</strong> {trip.destino}</p>
-                    <p className="text-white"><strong>Início:</strong> {new Date(trip.start).toLocaleString()}</p>
-                    <p className="text-white"><strong>Fim:</strong> {new Date(trip.end).toLocaleString()}</p>
+                    <button
+                      onClick={() => handleViewDetails(trip)}
+                      className="bg-blue-500 text-white p-2 mt-2 rounded"
+                    >
+                      Detalhes
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -187,6 +205,29 @@ const Travel = () => {
           </div>
         </div>
       </div>
+
+      {selectedTrip && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="bg-gray-800 text-white p-6 rounded-lg shadow-lg w-1/2">
+            <h2 className="text-xl font-bold mb-4">Detalhes da Viagem</h2>
+            <p><strong>ID da Viagem:</strong> {selectedTrip.id}</p>
+            <p><strong>ID do Motorista:</strong> {selectedTrip.driverName}</p>
+            <p><strong>Destino:</strong> {selectedTrip.destino}</p>
+            <p><strong>Início:</strong> {new Date(selectedTrip.start).toLocaleString()}</p>
+            <p><strong>Fim:</strong> {new Date(selectedTrip.end).toLocaleString()}</p>
+            <p><strong>Velocidade Média:</strong> {Math.round(selectedTrip.avgSpeed)} km/h</p>
+            <p><strong>Maior Velocidade:</strong> {Math.round(selectedTrip.maxSpeed)} km/h</p>
+            <p><strong>Menor Velocidade:</strong> {Math.round(selectedTrip.minSpeed)} km/h</p>
+            <p><strong>Distância Total:</strong> {selectedTrip.totalDistance} km</p>
+            <button
+              onClick={handleCloseDetails}
+              className="bg-red-500 text-white p-2 mt-4 rounded"
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };
